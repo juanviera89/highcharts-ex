@@ -15,11 +15,12 @@ export function highchartsModules() {
   // apply Highcharts Modules to this array
   return [ more, exporting ];
 }
-
+ // important ##########################################
 import solidgauge from 'highcharts/modules/solid-gauge';
 import * as Highcharts from 'highcharts';
 more(Highcharts);
 solidgauge(Highcharts);
+// important ##########################################
 
 @NgModule({
   declarations: [

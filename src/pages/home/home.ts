@@ -22,6 +22,8 @@ export class HomePage {
   public chart9;
   public chart10;
   public chart11;
+  public chart12;
+  public chart13;
 
   constructor(public navCtrl: NavController) {
 
@@ -797,21 +799,19 @@ this.chart10 = new Chart({
 });
 
 this.chart11 = new Chart({
-
+    credits: {
+        enabled: false
+    },
     exporting: {
         enabled: false
     },
     chart: {
         type: 'solidgauge',
-        height: '110%'
+        height: '100%'
     },
-
-    title: {
-        text: 'Activity',
-        style: {
-            fontSize: '24px'
-        }
-    },
+    colors: ['#F37961', '#42C2CC', '#42C2CC', '#910000', '#1aadce',
+    '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
+    title: null,
 
     tooltip: {
         borderWidth: 0,
@@ -869,15 +869,15 @@ this.chart11 = new Chart({
     },
 
     series: [{
-        name: 'Move',
         data: [{
+            selected: true,
             color: "#7cb5ec",
             radius: '112%',
             innerRadius: '88%',
-            y: 80
+            y: 80,
+            
         }]
     }, {
-        name: 'Exercise',
         data: [{
             color: "#434348",
             radius: '87%',
@@ -885,7 +885,6 @@ this.chart11 = new Chart({
             y: 65
         }]
     }, {
-        name: 'Stand',
         data: [{
             color: "#90ed7d",
             radius: '62%',
@@ -896,12 +895,157 @@ this.chart11 = new Chart({
 
 });
 
+
+this.chart12 = new Chart({
+    exporting: {
+        enabled: false
+    },
+    chart: {
+        type: 'solidgauge'
+    },
+
+    title: null,
+
+    pane: {
+        size: '100%',
+        startAngle: 0,
+        endAngle: 360,
+        background: {
+            backgroundColor:  '#EEE',
+            innerRadius: '80%',
+            outerRadius: '100%',
+            borderColor: null
+        }
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    // the value axis
+    yAxis: {
+        stops: [
+            [0.1, '#55BF3B'], // green
+            [0.5, '#DDDF0D'], // yellow
+            [0.9, '#DF5353'] // red
+        ],
+        lineWidth: 0,
+        minorTickInterval: null,
+        tickAmount: 2,
+        title: {
+            y: 0
+        },
+        labels: {
+            y: 16,
+        		enabled: false
+        },
+
+        min: 0,
+        max: 200
+    },
+
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                y: 5,
+                borderWidth: 0,
+                useHTML: true,
+        				enabled: false
+            }
+        }
+    },
+
+    credits: {
+        enabled: false
+    },
+
+    series: [{
+        data: [80],
+        innerRadius: '80%',
+    }]
+
+});
+
+
+this.chart13 = new Chart({
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    chart: {
+        type: 'solidgauge',
+        height: '100%'
+    },
+    colors: ['#F37961', '#42C2CC', '#42C2CC', '#910000', '#1aadce',
+    '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
+    title: null,
+
+    tooltip: {
+        borderWidth: 0,
+        backgroundColor: 'none',
+        shadow: false,
+        style: {
+            fontSize: '16px'
+        },
+        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
+        positioner: function (labelWidth) {
+            return {
+                x: (this.chart.chartWidth - labelWidth) / 2,
+                y: (this.chart.plotHeight / 2) + 15
+            };
+        }
+    },
+
+    pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: [{ // Track for Move
+            outerRadius: '112%',
+            innerRadius: '88%',
+            backgroundColor: "rgba(124,181,236,0.3)",
+            borderWidth: 0
+        }]
+    },
+
+    yAxis: {
+        min: 0,
+        max: 100,
+        lineWidth: 0,
+        tickPositions: []
+    },
+
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                enabled: false
+            },
+            linecap: 'round',
+            stickyTracking: false,
+            rounded: false
+        }
+    },
+
+    series: [{
+        data: [{
+            selected: true,
+            color: "#7cb5ec",
+            radius: '112%',
+            innerRadius: '88%',
+            y: 80
+        }]
+    }]
+
+});
+
+
   }
 
   
 
   
-  }
+}
 
 
 
